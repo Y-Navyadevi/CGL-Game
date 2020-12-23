@@ -1,8 +1,63 @@
-public class Game{
+import java.util.Scanner;
+
+public class Game extends Board{
 	
-	public static void main(String Args[]) {
-		System.out.println("Hello git");
-		System.out.println("Hello github");
-		System.out.println("Uploading");
+	/**
+     * Creates initial genration [borad]
+     * @param n  size of the board n X n
+     * @param l[][]  array of live cells
+     */
+    public boolean[][] Board(int n, int l[][]) {
+    }
+
+    /**
+     * Check for the writeup on how to print the board.
+     * @param board[][]
+     * @param n
+     * @return
+     */
+    public void printBoard(boolean board[][]) {
+    }
+
+    /**
+     * Method to gerate a next generation. Call the printBoard
+     * to print the next generation.
+     * 
+     * @param board[][] board
+     * 
+     */
+    public void generateNextGeneration(boolean board[][]) {
+    }
+
+    /**
+     * Do not modify this main Method.
+     * 
+     * @param args
+     * @return
+     */
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // Reading size of the Board
+        int n = sc.nextInt();
+        
+        // Reading no. of initial live cells
+        int m = sc.nextInt();
+        int[][] l = new int[m][2];
+        int i = 0;
+        
+        // Reading Live cells
+        while (sc.hasNextInt()) {
+            l[i][0] = sc.nextInt();
+            l[i++][1] = sc.nextInt();
+        }
+        
+        // creating instance to CGLVersion2
+        Game c = new Game();
+        
+        // creating nextgenratin by calling nextgenration method
+        c.generateNextGeneration(c.createBoard(n, l));
+        sc.close();
+    }
 	}
 }
