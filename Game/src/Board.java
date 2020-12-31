@@ -70,7 +70,7 @@ public class Board {
 	        }
 	
 	       
-	return true;
+	        return true;
 	}
 	else
 	return false;
