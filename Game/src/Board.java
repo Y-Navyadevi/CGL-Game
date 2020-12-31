@@ -1,69 +1,80 @@
-import java.io.*;
-import java.util.Scanner;
+
+
 public class Board {
+	NextGeneration c=new NextGeneration();
+	public String printBoard(boolean[][] board)
+	{
+	if(board==null)
+	return "Board is printed";
+	int n2=board.length;
+	        for(int i=0;i<n2;i++) 
+	        {
+	            for(int j=0;j<n2;j++)
+	            {
+	                if(board[i][j]==true)
+	                {
+	                System.out.print('*');
+	                }
+	                else
+	                {
+	               
+	                System.out.print('.');
+	                }
+	            }
+	            System.out.println();
+	        }
+	        return "";
+	}
+	public boolean createboard(int size,int l[][])
+	{
+
+
+	if(size>=0)
+	{
+	if(l==null)
+	return true;
+	boolean s[][]=new boolean[size][size];
+	        for(int i=0;i<size;i++)  
+	        {
+	            for(int j=0;j<size;j++)
+	            {
+	                s[i][j]=false;
+	            }
+	        }
+	        for(int i=0;i<l.length;i++)
+	        {
+	            int a=l[i][0],b=l[i][1];
+	            s[a][b]=true;
+	        }
+	        System.out.println("CurrentGeneration");
+	        printBoard(s);
+	        System.out.println("NextGeneration");
+	        printBoard(c.nextgen(s));
+	        System.out.println("CurrentGenration");
+	        printBoard(s); // prints current generation.  
+	       
+	        for(int i=0;i<5;i++) // this loop is used to print five generations.
+	        {
+	        int count=0;
+	        for(int k=0;k<size;k++) // checks whether the board is existed or not.
+	        {
+	        for(int j=0;j<size;j++)
+	        if(s[k][j]==true)
+	        count=1;
+	        }
+	        if(count==0)
+	        break;
+	        System.out.println("NextGenration");
+	        s=c.nextgen(s);
+	        printBoard(s); // prints next generation.
+	        }
 	
-	/**
-     * This method creates a board for the CGL.
-     * @param n the size of the board.
-     * @param liveCells should be marked on the board as true
-     */
-    int n;
-    int[][] liveCells;
-    public void createBoard(final int n, int[][] liveCells) {
-        // your code goes here...
-        this.n=n;
-        this.liveCells=liveCells;
-        board=new boolean[n][n];
-        for(int i=0;i<liveCells[0].length;i++){
-            board[liveCells[i][0]][liveCells[i][1]]=true;
-        
-        }
-        printBoard(board);
-        // You can call the printBoard that prints the board.
-
-    }
-
-    /**
-    * This method prints the CGL board.
-    * @param board
-    */
-    boolean board[][];
-    public void printBoard(boolean board[][]) {
-        // your code goes here...
-        for(int i=0;i<board[0].length;i++){
-            for(int j=0;j<board[0].length-1;j++)
-                System.out.print(board[i][j]?"* ":". ");
-            System.out.print(board[i][i]?"*":".");
-            System.out.println();
-        }
-    }
-
-    /**
-     * This is the main method used to test the code.
-     * @param args the command line args.
-     */
-    public static void main(final String[] args) {
-        Scanner sc = new Scanner(System.in); // file to be scanned
-        Board c = new Board();
-        
-        // Reading the first line from the input which is n.
-        int n = sc.nextInt();
-        
-        // Reading the second line from the input which is m.
-        int m = sc.nextInt();
-
-        // Reading m liens that has two integers whcih are separated by a space.
-        int[][] liveCells = new int[m][2];
-        for (int i = 0; i < m; i++) {
-            liveCells[i][0] = sc.nextInt();
-            liveCells[i][1] = sc.nextInt();
-        }
-
-        // invokding the method to create a board. 
-        c.createBoard(n, liveCells);
-
-        // Closing the scanner object.
-        sc.close();
-    }
+	       
+	return true;
+	}
+	else
+	return false;
+	       
+	}
 
 }
