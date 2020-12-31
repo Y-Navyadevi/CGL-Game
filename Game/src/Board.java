@@ -66,7 +66,7 @@ public class Board {
 	        break;
 	        System.out.println("NextGenration");
 	        s=c.nextgen(s);
-	        printBoard(s); // prints next generation.
+	        printBoard(s); 
 	        }
 	
 	       
