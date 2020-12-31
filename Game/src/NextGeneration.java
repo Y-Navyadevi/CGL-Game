@@ -27,29 +27,29 @@ public class NextGeneration {
 	if(board!=null)
 	{
 	int n1 = board.length;
-	        boolean[][] ng = new boolean[n1][n1];
+	        boolean[][] gen = new boolean[n1][n1];
 	        for(int i=1;i<n1-1;i++){
 	            for(int j=1;j<n1-1;j++){
 	            int z=countlivecells(i,j,board);
 	            if(!board[i][j]){
 	                     if(z==3){
-	                         ng[i][j] = true;
+	                         gen[i][j] = true;
 	                     }
 	                 }
 	                 else{
 	                     if(z<2){
-	                         ng[i][j]=false;
+	                         gen[i][j]=false;
 	                     } else if(z>3){
-	                         ng[i][j]=false;
+	                         gen[i][j]=false;
 	                     }else if(z<=3){
-	                         ng[i][j]=true;
+	                         gen[i][j]=true;
 	                     }
 	                 }
 	           
 	            }
 
 	}
-	return ng;
+	return gen;
 	}
 	return board;
 
